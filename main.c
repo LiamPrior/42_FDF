@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/06 16:55:29 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/06 20:09:21 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,30 @@ int keydown(int keycode)
 // 		return (-1);
 // 	return (ft_strsrc(str) ? 1 : -1);
 // }
+void xyo_link(t_tools *tools, t_links *fresh)
+{
+    fresh->x = tools->x;
+    fresh->y = tools->y;
+    fresh->ordinate = ft_atoi(tools->line);
+}
 
 int ft_parse_map(t_links *head, t_tools *tools)
 {
-    t_links *next;
+    t_links *fresh;
     t_links *prev;
 
-    next = head;
-    while (next->next != NULL)
-        next = next->next;
+    fresh = head;
+    while (fresh->next != NULL)
+        fresh = fresh->next;
     if (!(NEXTMLLC))
         return (-1);
-
+    XYO_link(tools, fresh);
+    prev = fresh;
+    fresh->next = NULL;
+    fresh->prev = prev;
+	while (str[0] == '\0')
+		return (-1);
+	return (ft_strsrc(str) ? 1 : -1);
 }
 
 int main(int argc, char **argv)
@@ -71,7 +83,7 @@ int main(int argc, char **argv)
         {
             if (!(tools->line[0]))
                 return(0);
-            ft_parse_map(links, tools)//->line, tools->y, tools->x);
+            ft_parse_map(links, tools);//->line, tools->y, tools->x);
             tools->line[0] = '\0';
         }
     }

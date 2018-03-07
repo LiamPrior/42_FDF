@@ -6,13 +6,13 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/06 16:54:27 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/06 20:04:50 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# define NEXTMLLC (new->next = (t_plc *)malloc(sizeof(t_plc)))
+# define NEXTMLLC fresh->next = (t_links *)malloc(sizeof(t_links))
 
 # include "minilibx_macos/mlx.h"
 # include <unistd.h>
@@ -30,15 +30,21 @@ typedef struct  s_tools
     int         fd;
     int         y;
     int         x;
+    char        *ordinate;
 
 }               t_tools;
 
-typedef struct  s_links;
+typedef struct  s_links
 {
-    struct s_link *next;
-    struct s_link *prev;
+    struct      s_link *next;
+    struct      s_link *prev;
+    int         x;
+    int         y;
+    int         ordinate;
 }               t_links;
 
+int ft_parse_map(t_links *head, t_tools *tools);
+void xyo_link(t_tools *tools, t_links *fresh);
 // typedef struct		s_plc
 // {
 // 	struct s_plc	*next;
@@ -99,6 +105,4 @@ typedef struct  s_links;
 // 	char			*line;
 // 	int				y;
 // }					t_read;
-    links = ft_init_links();
-    tools = ft_init_tools();
 #endif

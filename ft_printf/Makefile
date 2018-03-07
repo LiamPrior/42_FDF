@@ -5,38 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lprior <lprior@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/03/06 12:19:27 by lprior            #+#    #+#              #
-#    Updated: 2018/03/06 18:35:15 by lprior           ###   ########.fr        #
+#    Created: 2018/01/22 10:44:33 by lprior            #+#    #+#              #
+#    Updated: 2018/02/17 23:17:17 by lprior           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-libx_flags = -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
+NAME = libftprintf.a
 
-cflags = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror 
 
-make_libft = @make -C ./GNL/libft/
+SRC = ft_fwap.c ft_parsec.c ft_parsef.c ft_printf.c ft_basic_print.c \
+	ft_print_pup.c ft_wchar_bonus.c ft_parse_tools.c ft_check.c ft_prints.c \
+	ft_conversion_tools.c
 
-header = fdf.h
+OBJECTS = *.o
 
-includes = ./GNL/libft/libft.a ./GNL/get_next_line.c
+LIBFT_SRC = libft/*.c
 
-SRC = main.c ft_initialize.c
+all: $(NAME) 
 
-OBJ = *.o
+$(NAME): 
+		gcc $(FLAGS) -c $(SRC) $(LIBFT_SRC)
+		ar rcs $(NAME) $(OBJECTS)
+		ranlib $(NAME)
 
-cc = @gcc
-
-name = fdf
-
-all : $(name)
-
-$(name) :
-	@make -C GNL/libft/
-	$(cc) $(libx_flags) $(SRC) $(includes) -o $(name)
-	@echo "Created FDF executable"
 clean:
-	@make -C GNL/libft/ clean
-	@/bin/rm -f $(name)
+	rm -rf $(OBJECTS)
+
 fclean: clean
-	@make -C GNL/libft/ fclean
+	rm -rf $(NAME)
+
 re: fclean all
