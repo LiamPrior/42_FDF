@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/06 20:04:50 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/10 16:44:29 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ typedef struct  s_links
     int         ordinate;
 }               t_links;
 
-int ft_parse_map(t_links *head, t_tools *tools);
-void xyo_link(t_tools *tools, t_links *fresh);
+int     ft_parse_map(t_links *head, t_tools *tools);
+void    xyo_link(t_tools *tools, t_links *fresh);
+void    ft_init_tools(t_tools *tools);
+void    ft_init_links(t_links *links);
+void    ft_init_structs(t_links *links, t_tools *tools);
 // typedef struct		s_plc
 // {
 // 	struct s_plc	*next;
