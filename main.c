@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
+/*   By: liamprior <liamprior@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/12 21:18:26 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/12 23:24:01 by liamprior        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,16 +142,16 @@ int ft_create_list(t_links *head, t_tools *tools)
     t_links *fresh;
 
     fresh = head;
-    if(!ft_add_link(fresh))
-        return (-1);
-    // tools_to_list(tools, fresh);
-    fresh->x = X;
-    fresh->y = Y;
-    fresh->ordinate = ft_atoi(LINE);
-    printf("x = %d, y = %d, z = %d", fresh->x, fresh->y, fresh->ordinate);
-    fresh->next = NULL;
 	if (tools->line[0] == '\0')
         return (-1);
+    if(!ft_add_link(fresh))
+        return (-1);
+    tools_to_list(tools, fresh);
+    // fresh->x = X;
+    // fresh->y = Y;
+    // fresh->ordinate = ft_atoi(LINE);
+    printf("x = %d, y = %d, z = %d", fresh->x, fresh->y, fresh->ordinate);
+    fresh->next = NULL;
 	return (ft_check_line(tools) ? 1 : -1);
 }
 
