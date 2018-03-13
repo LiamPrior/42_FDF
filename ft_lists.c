@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lists.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/21 11:51:46 by lprior            #+#    #+#             */
-/*   Updated: 2017/09/24 20:01:09 by lprior           ###   ########.fr       */
+/*   Created: 2018/03/12 18:08:18 by lprior            #+#    #+#             */
+/*   Updated: 2018/03/12 18:26:19 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	ft_bzero(void *s, size_t n)
+int ft_add_link(t_links *fresh)
 {
-	ft_memset(s, 0, n);
+    while (NXT)//go to end of list!
+        fresh = fresh->next;
+    if (!(NEXTMLLC))//if it doesnt malloc return -1;
+        return (-1);
+    return (1);
 }

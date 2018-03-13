@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
+/*   By: liamprior <liamprior@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 00:01:04 by lprior            #+#    #+#             */
-/*   Updated: 2018/02/18 20:06:57 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/11 20:07:02 by liamprior        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdint.h>
 # include <stdbool.h>
 # include <wchar.h>
-# include "libft/libft.h"
+# include "../libft.h"
 # include <stdio.h>
 
 # define NORMAL        "\x1B[0m"

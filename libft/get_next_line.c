@@ -6,13 +6,13 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 11:52:28 by lprior            #+#    #+#             */
-/*   Updated: 2017/12/09 13:23:15 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/12 20:02:06 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-static int	find_nl(int fd, char **str, char **line)
+static	int	find_nl(int fd, char **str, char **line)
 {
 	char	*point;
 	char	*delmem;
@@ -35,7 +35,7 @@ static int	find_nl(int fd, char **str, char **line)
 	return (0);
 }
 
-static int	ft_readfile(int fd, char **str)
+static	int	ft_readfile(int fd, char **str)
 {
 	char	*pylon;
 	char	*delmem;
@@ -58,9 +58,9 @@ static int	ft_readfile(int fd, char **str)
 	return (ret);
 }
 
-int			get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	static	char	*str[4096];
+	static	char	*str[4864];
 
 	if (!line || fd < 0 || BUFF_SIZE < 0)
 		return (-1);

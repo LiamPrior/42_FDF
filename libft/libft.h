@@ -3,19 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
+/*   By: liamprior <liamprior@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/22 17:27:36 by lprior            #+#    #+#             */
-/*   Updated: 2018/02/18 01:29:46 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/11 21:00:36 by liamprior        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define BUFF_SIZE 32
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include "./ft_printf/ft_printf.h"
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+
+
+
 
 typedef	struct		s_list
 {
@@ -92,5 +100,9 @@ char				*ft_strrev(char *str);
 void				ft_print_putnbr(long long int n, int *res);
 void				ft_print_putchar(char c, int *res);
 void				ft_print_putstr(char const *s, int *res);
+
+int					get_next_line(const int fd, char **line);
+// static				int	find_nl(int fd, char **str, char **line);
+// static				int	ft_readfile(int fd, char **str);
 
 #endif
