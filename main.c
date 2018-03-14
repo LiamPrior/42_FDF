@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/13 17:05:17 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/13 20:06:43 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,8 @@ int keydown(int keycode)
 }
 
 
-int ft_check_line(t_tools *tools)
+int ft_check_line(t_tools *tools)//change me
 {
-    // int i;
-
-    // i = 0;
-    // // printf("HERELS\n");
-    // while (LINE[i])
-    // {
-    //     if (!ft_isdigit(LINE[i]) || LINE[i] != '-')
-    //         i++;
-    //     else
-    //         return (1);
-    // }
-    // printf("HERELS\n");
-    // return (-1);
     int i;
 
 	i = 0;
@@ -47,7 +34,7 @@ int ft_check_line(t_tools *tools)
 		i++;
 	}
 	return (-1);
-}
+}//.............
 int ft_create_list(t_links *head, t_tools *tools)
 {
     t_links *fresh;
@@ -57,11 +44,6 @@ int ft_create_list(t_links *head, t_tools *tools)
         return (-1);
     if(!ft_add_link(fresh, tools))
         return (-1);
-    tools_to_list(tools, fresh);
-    // fresh->x = X;
-    // fresh->y = Y;
-    // fresh->ordinate = ft_atoi(LINE);
-    printf("x = %d, y = %d, z = %d", fresh->x, fresh->y, fresh->ordinate);
 	return (ft_check_line(tools) ? 1 : -1);
 }
 
@@ -108,25 +90,27 @@ int ft_parse_the_map(t_tools *tools, t_links *links, int fd)
 
 int main(int argc, char **argv)
 {
-    void    *mlx;
-    void    *window;
+    t_mlx   *mlx;
     t_tools *tools;
     t_links *links;
     int     fd;
     int i = 0;
     links = ft_init_links();
     tools = ft_init_tools();
+    mlx = (t_mlx *)malloc(sizeof(t_mlx));
     if (argc == 2)
     {
         fd = open(argv[1], O_RDONLY);
         if (!ft_parse_the_map(tools, links, fd))
             return (0);
-        while (links)
-        {
-            printf("here = [%d]\n", i);
-            links = links->next;
-            i++;
-        }
+        mlx->mlx = mlx_init();
+        mlx->win = mlx_new_window(mlx, WIDTH, HEIGHT, "Lprior FDF");
+        // while (links)
+        // {
+        //     printf("%d:[x = %d, y = %d, z = %d]\n", i, links->x, links->y, links->ordinate);
+        //     links = links->next;
+        //     i++;
+        // }
             // tools->fd = open(argv[1], O_RDONLY);
         // while (get_next_line(tools->fd, &tools->line) > 0)
         // {
@@ -137,11 +121,11 @@ int main(int argc, char **argv)
         // }
         // close(tools->fd);
     }
-    // free links
-    // mlx = mlx_init();
-    // window = mlx_new_window(mlx, 800, 800, "Lprior FDF");
-    // mlx_hook(window, 2, 0, keydown, 0);
-    // mlx_loop(mlx);
+    // return (0);
+    mlx = mlx_init();
+    mlx->win = mlx_new_window(mlx, WIDTH, HEIGHT, "Lprior FDF");
+    mlx_hook(mlx->win, 2, 0, keydown, 0);
+    mlx_loop(mlx);
 }
 
 

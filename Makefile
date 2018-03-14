@@ -6,7 +6,7 @@
 #    By: lprior <lprior@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/06 12:19:27 by lprior            #+#    #+#              #
-#    Updated: 2018/03/06 18:35:15 by lprior           ###   ########.fr        #
+#    Updated: 2018/03/13 19:48:16 by lprior           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ libx_flags = -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 cflags = -Wall -Wextra -Werror
 
-make_libft = @make -C ./GNL/libft/
+make_libft = @make -C ./libft/
 
 header = fdf.h
 
-includes = ./GNL/libft/libft.a ./GNL/get_next_line.c
+includes = ./libft/libft.a
 
-SRC = main.c ft_initialize.c
+SRC = main.c ft_initialize.c ft_lists.c
 
 OBJ = *.o
 
@@ -31,12 +31,12 @@ name = fdf
 all : $(name)
 
 $(name) :
-	@make -C GNL/libft/
+	@make -C libft/
 	$(cc) $(libx_flags) $(SRC) $(includes) -o $(name)
 	@echo "Created FDF executable"
 clean:
-	@make -C GNL/libft/ clean
+	@make -C libft/ clean
 	@/bin/rm -f $(name)
 fclean: clean
-	@make -C GNL/libft/ fclean
+	@make -C libft/ fclean
 re: fclean all

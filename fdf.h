@@ -6,13 +6,16 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/13 16:40:08 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/13 19:56:42 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# define WIDTH 1000
+# define HEIGHT 1000
+ 
 # define FD tools->fd
 # define NXT fresh->next
 # define LINE tools->line
@@ -48,6 +51,15 @@ typedef struct  s_links
     int         y;
     int         ordinate;
 }               t_links;
+
+typedef struct s_mlx
+{
+    void        *mlx;
+    void        *win;
+    void        *img;
+}              t_mlx;
+
+
 
 int     ft_parse_the_map(t_tools *tools, t_links *links, int fd);//recursion used to increment y once x has finished
 t_links *ft_parse_x(t_tools *tools, t_links *links);
