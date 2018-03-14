@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/12 20:42:37 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/13 16:40:08 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define FD tools->fd
 # define NXT fresh->next
 # define LINE tools->line
-# define X tools->x
-# define Y tools->y
+# define XVAL tools->x
+# define YVAL tools->y
 # define BAD tools->bad
 # define ISVLD !ft_isdigit(LINE[i]) || LINE[i] != '-'
 # define NEXTMLLC (fresh->next = (t_links *)malloc(sizeof(t_links)))
@@ -57,6 +57,7 @@ t_tools    *ft_init_tools(void);
 t_links    *ft_init_links(void);
 void    ft_init_structs(t_tools *tools, t_links *links);
 int     ft_check_line(t_tools *tools);
-int     ft_add_link(t_links *fresh);
+int     ft_add_link(t_links *fresh, t_tools *tools);
+t_links     *create_link(t_tools *tools);
 
 #endif

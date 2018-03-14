@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 15:24:18 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/12 19:55:35 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/13 16:42:19 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ t_tools     *ft_init_tools()
     tools = (t_tools *)malloc(sizeof(t_tools));
     LINE = NULL;
     BAD = false;
-    X = -1;
-    Y = -1;
+    XVAL = -1;
+    YVAL = -1;
     tools->ordinate = NULL;
     FD = 0;
     return (tools);
@@ -46,7 +46,23 @@ t_tools     *ft_init_tools()
 
 void tools_to_list(t_tools *tools, t_links *fresh)
 {
-    fresh->x = X;
-    fresh->y = Y;
+    fresh->x = XVAL;
+    fresh->y = YVAL;
     fresh->ordinate = ft_atoi(LINE);
+}
+
+t_links     *create_link(t_tools *tools)
+{
+    t_links *new;
+
+    if (!(new = malloc(sizeof(t_links))))
+        return (NULL);
+    new->x = XVAL;
+    new->y = YVAL;
+    new->ordinate = ft_atoi(LINE);
+    // new->x = x;
+    // new->y = y;
+    // new->ordinate = z;
+    new->next = NULL;
+    return (new);
 }
