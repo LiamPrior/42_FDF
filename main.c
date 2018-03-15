@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/13 20:06:43 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/14 20:54:15 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int ft_parse_the_map(t_tools *tools, t_links *links, int fd)
     if (get_next_line(fd, &LINE) > 0)
     {
         ft_parse_x(tools, links);
+        // LINE = NULL;
         XVAL = 0;
         if (BAD == false)
             ft_parse_the_map(tools, links, fd);
@@ -97,64 +98,32 @@ int main(int argc, char **argv)
     int i = 0;
     links = ft_init_links();
     tools = ft_init_tools();
-    mlx = (t_mlx *)malloc(sizeof(t_mlx));
+    pov = ft_init_pov();
+
     if (argc == 2)
     {
         fd = open(argv[1], O_RDONLY);
         if (!ft_parse_the_map(tools, links, fd))
             return (0);
-        mlx->mlx = mlx_init();
-        mlx->win = mlx_new_window(mlx, WIDTH, HEIGHT, "Lprior FDF");
-        // while (links)
-        // {
-        //     printf("%d:[x = %d, y = %d, z = %d]\n", i, links->x, links->y, links->ordinate);
-        //     links = links->next;
-        //     i++;
-        // }
-            // tools->fd = open(argv[1], O_RDONLY);
-        // while (get_next_line(tools->fd, &tools->line) > 0)
-        // {
-        //     if (!(tools->line[0]))
-        //         return(0);
-        //     ft_parse_map(links, tools);//->line, tools->y, tools->x);
-        //     tools->line[0] = '\0';
-        // }
-        // close(tools->fd);
+        free tools;
+        ft_calc_radian(pov);
+        ft_lets_get_started(links, pov);
     }
-    // return (0);
-    mlx = mlx_init();
-    mlx->win = mlx_new_window(mlx, WIDTH, HEIGHT, "Lprior FDF");
-    mlx_hook(mlx->win, 2, 0, keydown, 0);
-    mlx_loop(mlx);
+    // mlx = ft_init_mlx();
+    // mlx = (t_mlx *)malloc(sizeof(t_mlx));
+    // while (links)
+    // {
+    //     printf("x = [%d], y = [%d], z = [%d]\n", links->x, links->y, links->ordinate);
+    //     links = links->next;
+    // }
+    // mlx->mlx = mlx_init();
+    // mlx->win = mlx_new_window(mlx, WIDTH, HEIGHT, "Lprior FDF");
+    // // return (0);
+    // mlx = mlx_init();
+    // mlx->win = mlx_new_window(mlx, WIDTH, HEIGHT, "Lprior FDF");
+    // mlx_hook(mlx->win, 2, 0, keydown, 0);
+    // mlx_loop(mlx);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // int		ft_strsrc(char *str)
