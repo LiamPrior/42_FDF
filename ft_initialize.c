@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 15:24:18 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/14 20:47:27 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/15 18:04:12 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,35 @@ t_mlx   *ft_init_mlx(void)
     return (mlx);   
 }
 
-t_pov *ft_init_pov(void)
+t_rotation *ft_init_rot(void)
 {
-    t_pov *pov;
+    t_rotation *rot;
+    
+    rot = (t_rotation *)malloc(sizeof(t_rotation));
+    rot->degree_x = 0;
+    rot->radian_x = 0;
+    rot->degree_y = 0;
+    rot->radian_y = 0;
+    rot->degree_z = 0;
+    rot->radian_z = 0;
+    rot->x0 = 0;
+    rot->x1 = 0;
+    rot->x2 = 0;
+    rot->y0 = 0;
+    rot->y1 = 0;
+    rot->y2 = 0;
+    rot->z0 = 0;
+    rot->z1 = 0;
+    return (rot);    
+}
 
-    pov = (t_pov *)malloc(sizeof(t_pov));
-    pov->degree_x = 0;
-    pov->radian_x = 0;
-    pov->degree_y = 0;
-    pov->radian_y = 0;
-    pov->degree_z = 0;
-    pov->radian_z = 0;
-    return (pov);    
+t_env *ft_init(void)
+{
+    t_env *e;
+
+    e = malloc(sizeof(t_env *));
+    e->tools = ft_init_tools();
+    e->links = ft_init_links();
+    e->rot = ft_init_rot();
+    return (e);
 }

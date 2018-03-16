@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/14 20:54:15 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/15 18:13:11 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,23 +91,25 @@ int ft_parse_the_map(t_tools *tools, t_links *links, int fd)
 
 int main(int argc, char **argv)
 {
-    t_mlx   *mlx;
-    t_tools *tools;
-    t_links *links;
-    int     fd;
-    int i = 0;
-    links = ft_init_links();
-    tools = ft_init_tools();
-    pov = ft_init_pov();
+    // t_mlx       *mlx;
+    // t_tools     *tools;
+    // t_links     *links;
+    // t_rotation  *rot;
+    t_env       *all;
+    int     fd;//possibly put into a struct
 
+    all = ft_init();
+    // links = ft_init_links();
+    // tools = ft_init_tools();
+    // rot = ft_init_rot();
     if (argc == 2)
     {
         fd = open(argv[1], O_RDONLY);
-        if (!ft_parse_the_map(tools, links, fd))
+        if (!ft_parse_the_map(all->tools, all->links, fd))
             return (0);
-        free tools;
-        ft_calc_radian(pov);
-        ft_lets_get_started(links, pov);
+        // free (all);
+        ft_calc_radian(all->rot);
+        ft_lets_get_started(all->links, all->rot, all);
     }
     // mlx = ft_init_mlx();
     // mlx = (t_mlx *)malloc(sizeof(t_mlx));

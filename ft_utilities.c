@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 19:03:23 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/14 19:48:52 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/15 14:16:16 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_links     *create_link(t_tools *tools)
     return (new);
 }
 
-t_pov	*ft_find_radian(t_pov *degrees)
+t_rotation	*ft_calc_radian(t_rotation *degrees)
 {
-	t_pov *pov;
+	t_rotation *pov;
 
 	pov = degrees;
 	pov->radian_x = pov->degree_x * (PI / 180);

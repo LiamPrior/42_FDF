@@ -6,7 +6,7 @@
 #    By: lprior <lprior@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/06 12:19:27 by lprior            #+#    #+#              #
-#    Updated: 2018/03/13 19:48:16 by lprior           ###   ########.fr        #
+#    Updated: 2018/03/15 19:45:09 by lprior           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ header = fdf.h
 
 includes = ./libft/libft.a
 
-SRC = main.c ft_initialize.c ft_lists.c
+SRC = main.c ft_initialize.c ft_lists.c ft_utilities.c ft_rotation.c
 
 OBJ = *.o
 

@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 20:56:05 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/14 21:05:49 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/15 18:28:29 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,35 @@
 // 	free(alg);
 // 	return (cur);
 
-t_links     *ft_lets_get_started(t_links *links, t_pov *pov)
+t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all)
 {
-    t_links *head;
+    t_links *links;
 
-    head = links;
-    while ()
-
+    // rot = (t_rotation *)malloc(sizeof(t_rotation));
+    links = head;
+    while (head)
+    {
+        //x axis roation
+        rot->x0  =  links->x;
+        rot->y0  =  (links->y * cos(rot->radian_x)) + (links->ordinate * sin(rot->radian_x));
+        rot->z0  =  (links->ordinate * cos(rot->radian_x)) - (links->y * sin(rot->radian_x));
+        //y axis rotation
+        rot->x1  =  (rot->x0 * cos(rot->radian_y)) - (rot->z0 * sin(rot->radian_y));
+        rot->y1  =  rot->y0;
+        rot->z1  =  (rot->z0 * cos(rot->radian_y)) + (rot->x0 * sin(rot->radian_y));
+        //apply x1 and y1 to x2 y2
+        rot->x2  =  (rot->x1 * cos(rot->radian_z)) + (rot->y1 * sin(rot->radian_z));
+        rot->y2  =  (rot->y1 * cos(rot->radian_z)) - (rot->x1 * sin(rot->radian_z));
+        //scaling
+        rot->x2 *= (WIDTH - 200) / all->x_max;
+        rot->y2 *= (HEIGHT - 200) / all->y_max;
+        rot->x2 += 100;
+        rot->y2 += 100;
+        //the endpoint where the pixle location is deffined
+        links->tru_y = (int)rot->y2;
+        links->tru_x = (int)rot->x2;
+        head = head->next;
+    }
+    return (head);
 
 }
