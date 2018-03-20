@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 15:14:00 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/19 18:58:44 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/20 13:07:25 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ void ft_repeat(t_env *all)
 {
     ft_calc_radian(all->rot);
     ft_lets_get_started(all->links, all->rot, all);
-    ft_draw(all->links, all->tools);
+    ft_draw(all, all->links, all->tools);
 }
 
-void    ft_key_hook(int key, t_env *all)
+int    ft_key_hook(int key, t_env *all)
 {
     if (key == 53)
-        ft_exit(1, all);//I have to free all my structs close window and terminate program;
+    {
+        write(1, "quit\n", 5);
+        //ft_exit(1, all);//I have to free all my structs close window and terminate program;
+    }
     else if (key == 37)
         all->rot->degree_x += .01;
     else if (key == 38)
@@ -48,15 +51,16 @@ void    ft_key_hook(int key, t_env *all)
     else if (key == 40)
         all->rot->degree_y += .01;
     ft_repeat(all);
+    return (0);
 }
 
 void ft_mlx_looper(t_env *all)
 {
-    t_list *dup;
+    t_env *dup;
 
-    dup = all->links;
+    dup = all;
     ft_init_mlx();
-    ft_draw(all->links, all->tools);
+    ft_draw(all, all->links, all->tools);
     mlx_key_hook(all->mlx->win, ft_key_hook, all);
     mlx_loop(all->mlx->mlx);
 }

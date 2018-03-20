@@ -6,21 +6,11 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/19 19:35:54 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/20 12:52:20 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-//  gcc main.c fdf.h ft_lists.c ft_initialize.c -L./libft -lft
-int ft_key_hook(int keycode)
-{
-    ft_printf("%d\n", keycode);
-    if (keycode == 53)
-        ft_exit();
-    return (0);
-}
-
 
 int ft_check_line(t_tools *tools)//change me
 {

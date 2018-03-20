@@ -6,13 +6,13 @@
 #    By: lprior <lprior@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/06 12:19:27 by lprior            #+#    #+#              #
-#    Updated: 2018/03/16 15:09:14 by lprior           ###   ########.fr        #
+#    Updated: 2018/03/20 13:10:04 by lprior           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 libx_flags = -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
-cflags = -Wall -Wextra -Werror
+cflags = -Wall -Wextra -Werror -g
 
 make_libft = @make -C ./libft/
 
@@ -20,7 +20,7 @@ header = fdf.h
 
 includes = ./libft/libft.a
 
-SRC = main.c ft_initialize.c ft_lists.c ft_utilities.c ft_rotation.c
+SRC = main.c ft_initialize.c ft_lists.c ft_utilities.c ft_rotation.c ft_draw.c ft_mlx.c
 
 OBJ = *.o
 

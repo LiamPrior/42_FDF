@@ -6,45 +6,88 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 13:36:36 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/19 19:48:30 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/20 13:00:41 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// t_plc	*find_struct(t_plc *head, int x_cord, int y_cord)
-// {
-// 	t_plc *new;
-
-// 	new = head;
-// 	if (!(x_cord >= 0 || y_cord >= 0))
-// 		return (NULL);
-// 	while (new->next)
-// 	{
-// 		if (new->x == x_cord && new->y == y_cord)
-// 			return (new);
-// 		new = new->next;
-// 	}
-// 	return (NULL);
-// }
-
-void    ft_find_struct(t_links *temp, t_links *links)
+void    ft_driving_x(t_env *all, int theda_x, int theda_y, int prev_x, int prev_y, int m)
 {
+    int e;
+    int x;
+    int y;
 
-
+    x = prev_x;
+    y = prev_y;
+    e = m - 1;
+    while (x < theda_x && y < theda_y)
+    {
+        mlx_pixel_put(all->mlx->mlx, all->mlx->win, x, y, 0xFFFFFF);
+        x++;
+        e += m;
+        if (e >= 0)
+        {
+            e -= 1;
+            y += m;
+        }
+    }
 }
 
-void    ft_draw(t_links *links, t_tools *tools)
+void    ft_driving_y(t_env *all, int theda_x, int theda_y, int prev_x, int prev_y, int m)
+{
+    int e;
+    int x;
+    int y;
+
+    x = prev_x;
+    y = prev_y;
+    e = m - 1;
+    while (x < theda_x && y < theda_y)
+    {
+        mlx_pixel_put(all->mlx->mlx, all->mlx->win, x, y, 0xFFFFFF);
+        y++;
+        e += m;
+        if (e >= 0)
+        {
+            e -= 1;
+            x += m;
+        }
+    }
+}
+
+void    ft_draw(t_env *all, t_links *links, t_tools *tools)
 {
     int da;
     t_links *temp;
-    // i dont techniqly needd to mkae a function to check the da. I can just find it here.
-    // open my mlx window here i guess.
+    int theda_x;
+    int theda_y;
+    int m;
+
     temp = links;
-    tempft_find_struct(temp, links);
+    da =-1;
     while (temp)
     {
-    links->tru_x > links->tru_y ? ft_driving_x : ft_driving_y;
-    tools->prev_x = links->tru_x;
-    tools->prev_y = links->tru_y;
+        theda_x = links->tru_x - tools->prev_x;
+        theda_y = links->tru_x - tools->prev_y;
+        m = theda_y/theda_x;
+        da = theda_x >= theda_y ? 1 : 0;
+        if (da > 0)
+        {
+            if (theda_x > tools->prev_x)
+                ft_driving_x(all, theda_x, theda_y, tools->prev_x, tools->prev_y, m);
+            else
+                ft_driving_x(all, tools->prev_x, tools->prev_y, theda_x, theda_y, m);
+        }
+        else if (da == 0)
+        {
+            if (theda_y > tools->prev_y)
+                ft_driving_y(all, theda_x, theda_y, tools->prev_x, tools->prev_y, m);
+            else
+                ft_driving_y(all, tools->prev_x, tools->prev_y, theda_x, theda_y, m);
+        }
+        tools->prev_x = links->tru_x;
+        tools->prev_y = links->tru_y;
+        temp = temp->next;
+    }
 }

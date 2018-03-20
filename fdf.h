@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/19 16:01:37 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/20 13:07:40 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,33 @@ typedef struct	s_env
 	double			y_max;
 	double			x_max;
 }				t_env;
-
+//main
 int 		ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd);//recursion used to increment y once x has finished
 t_links 	*ft_parse_x(t_env *all, t_tools *tools, t_links *links);
 int     	ft_create_list(t_links *head, t_tools *tools);
-void    	tools_to_list(t_tools *tools, t_links *fresh);
+int 		ft_check_line(t_tools *tools);
+//init
 t_tools		*ft_init_tools(void);
 t_links		*ft_init_links(void);
 t_rotation	*ft_init_rot(void);
 t_env		*ft_init(void);
-int     	ft_check_line(t_tools *tools);
-int     	ft_add_link(t_links *fresh, t_tools *tools);
+t_mlx   	*ft_init_mlx(void);
+//lists
+int 		ft_add_link(t_links *fresh, t_tools *tools);
+//utilities
 t_links     *create_link(t_tools *tools);
 t_rotation	*ft_calc_radian(t_rotation *degrees);
+//mlx bs
+void		ft_repeat(t_env *all);
+int	    	ft_key_hook(int key, t_env *all);
+void 		ft_mlx_looper(t_env *all);
+//rotation
 t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
+//draw
+void    	ft_draw(t_env *all, t_links *links, t_tools *tools);
+void    	ft_driving_y(t_env *all, int theda_x, int theda_y, int prev_x, int prev_y, int m);
+void    	ft_driving_x(t_env *all, int theda_x, int theda_y, int prev_x, int prev_y, int m);
+
+
+
 #endif
