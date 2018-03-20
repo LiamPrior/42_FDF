@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 15:14:00 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/19 16:06:27 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/19 18:58:44 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void    ft_key_hook(int key, t_env *all)
         all->rot->degree_x += .01;
     else if (key == 40)
         all->rot->degree_y += .01;
-    re_repeat(all);
+    ft_repeat(all);
 }
 
 void ft_mlx_looper(t_env *all)

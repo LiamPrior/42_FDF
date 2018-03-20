@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 13:36:36 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/19 18:00:48 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/19 19:48:30 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 void    ft_find_struct(t_links *temp, t_links *links)
 {
 
+
 }
 
 void    ft_draw(t_links *links, t_tools *tools)
@@ -39,8 +40,10 @@ void    ft_draw(t_links *links, t_tools *tools)
     t_links *temp;
     // i dont techniqly needd to mkae a function to check the da. I can just find it here.
     // open my mlx window here i guess.
-    
+    temp = links;
     tempft_find_struct(temp, links);
+    while (temp)
+    {
     links->tru_x > links->tru_y ? ft_driving_x : ft_driving_y;
     tools->prev_x = links->tru_x;
     tools->prev_y = links->tru_y;
