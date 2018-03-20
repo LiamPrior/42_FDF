@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/15 19:51:37 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/19 16:01:37 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ typedef struct  s_tools
     bool        bad;
     int         fd;
     int         y;
-    int         x;
+	int         x;
+	int			prev_x;
+	int			prev_y;
     char        *ordinate;
 }               t_tools;
 
@@ -71,7 +73,6 @@ typedef struct		s_rotation
 	double			y2;
 	double			z0;
 	double			z1;
-	///////////////////////
 	double			degree_x;
 	double			radian_x;
 	double			degree_y;
@@ -88,30 +89,20 @@ typedef struct	s_env
 	t_links		*links;
 	t_rotation	*rot;
 	t_mlx		*mlx;
-	int			y_max;
-	int			x_max;
+	double			y_max;
+	double			x_max;
 }				t_env;
-// typedef struct		s_pov
-// {
-// 	double			degree_x;
-// 	double			radian_x;
-// 	double			degree_y;
-// 	double			radian_y;
-// 	double			degree_z;
-// 	double			radian_z;
-// 	// double			scaling;
-// }					t_pov;
 
-int     ft_parse_the_map(t_tools *tools, t_links *links, int fd);//recursion used to increment y once x has finished
-t_links *ft_parse_x(t_tools *tools, t_links *links);
-int     ft_create_list(t_links *head, t_tools *tools);
-void    tools_to_list(t_tools *tools, t_links *fresh);
+int 		ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd);//recursion used to increment y once x has finished
+t_links 	*ft_parse_x(t_env *all, t_tools *tools, t_links *links);
+int     	ft_create_list(t_links *head, t_tools *tools);
+void    	tools_to_list(t_tools *tools, t_links *fresh);
 t_tools		*ft_init_tools(void);
 t_links		*ft_init_links(void);
 t_rotation	*ft_init_rot(void);
 t_env		*ft_init(void);
-int     ft_check_line(t_tools *tools);
-int     ft_add_link(t_links *fresh, t_tools *tools);
+int     	ft_check_line(t_tools *tools);
+int     	ft_add_link(t_links *fresh, t_tools *tools);
 t_links     *create_link(t_tools *tools);
 t_rotation	*ft_calc_radian(t_rotation *degrees);
 t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);

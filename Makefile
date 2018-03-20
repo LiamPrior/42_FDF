@@ -6,7 +6,7 @@
 #    By: lprior <lprior@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/06 12:19:27 by lprior            #+#    #+#              #
-#    Updated: 2018/03/15 19:45:09 by lprior           ###   ########.fr        #
+#    Updated: 2018/03/16 15:09:14 by lprior           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.c ft_initialize.c ft_lists.c ft_utilities.c ft_rotation.c
 
 OBJ = *.o
 
-cc = @gcc
+cc = @gcc -g
 
 name = fdf
 

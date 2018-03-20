@@ -6,18 +6,18 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/15 18:13:11 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/19 17:48:08 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 //  gcc main.c fdf.h ft_lists.c ft_initialize.c -L./libft -lft
-int keydown(int keycode)
+int ft_key_hook(int keycode)
 {
     ft_printf("%d\n", keycode);
     if (keycode == 53)
-        exit(1);
+        ft_exit();
     return (0);
 }
 
@@ -47,12 +47,14 @@ int ft_create_list(t_links *head, t_tools *tools)
 	return (ft_check_line(tools) ? 1 : -1);
 }
 
-t_links *ft_parse_x(t_tools *tools, t_links *links)
+t_links *ft_parse_x(t_env *all, t_tools *tools, t_links *links)
 {
     int i;
 
     i = 0;
     XVAL++;
+    printf("%d\n", XVAL);
+    all->x_max = (double)XVAL;
     while (*LINE == ' ')
     {
         LINE++;
@@ -64,20 +66,21 @@ t_links *ft_parse_x(t_tools *tools, t_links *links)
     else
         while (*LINE && (ft_isdigit(LINE[0]) || LINE[0] == '-'))
             LINE++;
-    return (ft_parse_x(tools, links));
+    // all->x_max = (double)XVAL;
+    return (ft_parse_x(all, tools, links));
 }
 
 
-int ft_parse_the_map(t_tools *tools, t_links *links, int fd)
+int ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd)
 {
     YVAL++;
     if (get_next_line(fd, &LINE) > 0)
     {
-        ft_parse_x(tools, links);
+        ft_parse_x(all, tools, links);
         // LINE = NULL;
         XVAL = 0;
         if (BAD == false)
-            ft_parse_the_map(tools, links, fd);
+            ft_parse_the_map(all, tools, links, fd);
         else
         {   
             ft_printf(RED);
@@ -86,6 +89,7 @@ int ft_parse_the_map(t_tools *tools, t_links *links, int fd)
             return (0);
         }
     }
+    all->y_max = (double)YVAL;
     return (1);
 }
 
@@ -105,18 +109,21 @@ int main(int argc, char **argv)
     if (argc == 2)
     {
         fd = open(argv[1], O_RDONLY);
-        if (!ft_parse_the_map(all->tools, all->links, fd))
+        if (!ft_parse_the_map(all, all->tools, all->links, fd))
             return (0);
         // free (all);
         ft_calc_radian(all->rot);
+        all->links = all->links->next;
         ft_lets_get_started(all->links, all->rot, all);
+        ft_draw(all->links, all->tools);
+        ft_mlx_looper(all);
     }
     // mlx = ft_init_mlx();
     // mlx = (t_mlx *)malloc(sizeof(t_mlx));
-    // while (links)
+    // while (all->links)
     // {
-    //     printf("x = [%d], y = [%d], z = [%d]\n", links->x, links->y, links->ordinate);
-    //     links = links->next;
+    //     printf("x = [%d], y = [%d], z = [%d]\n", all->links->x, all->links->y, all->links->ordinate);
+    //     all->links = all->links->next;
     // }
     // mlx->mlx = mlx_init();
     // mlx->win = mlx_new_window(mlx, WIDTH, HEIGHT, "Lprior FDF");

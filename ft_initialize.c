@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 15:24:18 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/15 18:04:12 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/19 13:54:53 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_tools     *ft_init_tools(void)
     BAD = false;
     XVAL = -1;
     YVAL = -1;
+    tools->prev_x = 0;
+    tools->prev_y = 0;
     tools->ordinate = NULL;
     FD = 0;
     return (tools);
