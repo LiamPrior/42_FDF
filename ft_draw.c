@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 13:36:36 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/20 13:00:41 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/20 16:52:01 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    ft_driving_x(t_env *all, int theda_x, int theda_y, int prev_x, int prev_
     e = m - 1;
     while (x < theda_x && y < theda_y)
     {
-        mlx_pixel_put(all->mlx->mlx, all->mlx->win, x, y, 0xFFFFFF);
+        mlx_pixel_put(all->mlx, all->win, x, y, 0xFFFFFF);
         x++;
         e += m;
         if (e >= 0)
@@ -45,7 +45,7 @@ void    ft_driving_y(t_env *all, int theda_x, int theda_y, int prev_x, int prev_
     e = m - 1;
     while (x < theda_x && y < theda_y)
     {
-        mlx_pixel_put(all->mlx->mlx, all->mlx->win, x, y, 0xFFFFFF);
+        mlx_pixel_put(all->mlx, all->win, x, y, 0xFFFFFF);
         y++;
         e += m;
         if (e >= 0)
@@ -60,10 +60,11 @@ void    ft_draw(t_env *all, t_links *links, t_tools *tools)
 {
     int da;
     t_links *temp;
-    int theda_x;
-    int theda_y;
+    double theda_x;
+    double theda_y;
     int m;
 
+    printf("indraw\n");
     temp = links;
     da =-1;
     while (temp)

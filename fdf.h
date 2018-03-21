@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/20 13:07:40 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/20 19:13:54 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # define WIDTH 1000
-# define HEIGHT 1000
+# define HEIGHT 800
  
 # define FD tools->fd
 # define NXT fresh->next
@@ -44,7 +44,7 @@ typedef struct  s_tools
 	int         x;
 	int			prev_x;
 	int			prev_y;
-    char        *ordinate;
+    char        *altitude;
 }               t_tools;
 
 typedef struct  s_links
@@ -52,16 +52,16 @@ typedef struct  s_links
     struct      s_links *next;
     int         x;
     int         y;
-    int         ordinate;
+    int         altitude;
     int         tru_y;
     int         tru_x;
 }               t_links;
 
-typedef struct s_mlx
-{
-    void        *mlx;
-    void        *win;
-}              t_mlx;
+// typedef struct s_mlx
+// {
+//     void        *mlx;
+//     void        *win;
+// }              t_mlx;
 
 typedef struct		s_rotation
 {
@@ -88,10 +88,48 @@ typedef struct	s_env
 	t_tools		*tools;
 	t_links		*links;
 	t_rotation	*rot;
-	t_mlx		*mlx;
-	double			y_max;
-	double			x_max;
+	// t_mlx		*mlx;
+	double		y_max;
+	double		x_max;
+	void        *mlx;
+    void        *win;
 }				t_env;
+// typedef struct	s_env
+// {
+// 	void		*mlx;
+// 	void		*win;
+// 	void		*img;
+// 	char		*pixels;
+// 	t_tools		*tools;
+// 	t_links		*links;
+//  	t_rotation	*rot;
+// 	// t_vertex	***points;
+// 	// t_color		*colors;
+// 	int			num_colors;
+// 	int			width;
+// 	int			height;
+// 	int			z_min;
+// 	int			z_max;
+// 	float		theta;
+// 	float		phi;
+// 	float		psi;
+// 	float		x_max;
+// 	float		y_max;
+// 	float		z_scale;
+// 	float		scale;
+// 	float		x_shift;
+// 	float		y_shift;
+// 	float		z_shift;
+// 	float		r;
+// 	float		g;
+// 	float		b;
+// 	int			focal_dist;
+// 	int			bits_per_pixel;
+// 	int			size_line;
+// 	int			endian;
+// 	// t_keys		*pressed;
+// 	int			project:1;
+// }				t_env;
 //main
 int 		ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd);//recursion used to increment y once x has finished
 t_links 	*ft_parse_x(t_env *all, t_tools *tools, t_links *links);
@@ -102,7 +140,7 @@ t_tools		*ft_init_tools(void);
 t_links		*ft_init_links(void);
 t_rotation	*ft_init_rot(void);
 t_env		*ft_init(void);
-t_mlx   	*ft_init_mlx(void);
+// t_mlx   	*ft_init_mlx(void);
 //lists
 int 		ft_add_link(t_links *fresh, t_tools *tools);
 //utilities

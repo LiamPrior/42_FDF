@@ -6,32 +6,17 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 15:14:00 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/20 13:07:25 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/20 19:42:38 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-// int		hook_keydown(int key, t_all *all)
-// {
-// 	int i;
 
-// 	if (key == 53)
-// 		ft_exit(1, all);
-// 	if (key == 13)
-// 		all->cam->angle_x += .01;
-// 	if (key == 1)
-// 		all->cam->angle_x -= .01;
-// 	if (key == 2)
-// 		all->cam->angle_y += .01;
-// 	if (key == 0)
-// 		all->cam->angle_y -= .01;
-// 	redraw(all);
-// 	return (0);
-// }
 void ft_repeat(t_env *all)
 {
     ft_calc_radian(all->rot);
     ft_lets_get_started(all->links, all->rot, all);
+    mlx_clear_window(all->mlx, all->win);
     ft_draw(all, all->links, all->tools);
 }
 
@@ -56,11 +41,12 @@ int    ft_key_hook(int key, t_env *all)
 
 void ft_mlx_looper(t_env *all)
 {
-    t_env *dup;
+    void *img;
+    void *win;
 
-    dup = all;
-    ft_init_mlx();
-    ft_draw(all, all->links, all->tools);
-    mlx_key_hook(all->mlx->win, ft_key_hook, all);
-    mlx_loop(all->mlx->mlx);
+    img = mlx_init();
+    win = mlx_new_window(img, WIDTH, HEIGHT, "KMS");
+    // ft_draw(all, all->links, all->tools);
+    // mlx_key_hook(win, ft_key_hook, all);
+    mlx_loop(img);
 }

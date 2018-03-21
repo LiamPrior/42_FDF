@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 19:03:23 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/15 14:16:16 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/20 19:17:17 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ t_links     *create_link(t_tools *tools)
 {
     t_links *new;
 
-    if (!(new = malloc(sizeof(t_links))))
+    if (!(new = (t_links *)malloc(sizeof(t_links))))// remembere star
         return (NULL);
     new->x = XVAL;
     new->y = YVAL;
-    new->ordinate = ft_atoi(LINE);
+    new->altitude = ft_atoi(LINE);
     new->next = NULL;
     return (new);
 }
