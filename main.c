@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/20 19:18:19 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/21 17:48:54 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ int main(int argc, char **argv)
         if (!ft_parse_the_map(all, all->tools, all->links, fd))
             return (0);
         all->links = all->links->next;
-        ft_calc_radian(all->rot);
-        ft_lets_get_started(all->links, all->rot, all);
-        ft_mlx_looper(all);
+        // ft_calc_radian(all->rot);
+        // ft_lets_get_started(all->links, all->rot, all);
+        // ft_mlx_looper(all);
     }
 }
