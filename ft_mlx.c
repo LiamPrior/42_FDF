@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 15:14:00 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/21 16:46:10 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/21 22:17:15 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void ft_repeat(t_env *all)
     ft_calc_radian(all->rot);
     ft_lets_get_started(all->links, all->rot, all);
     mlx_clear_window(all->mlx, all->win);
-    ft_draw(all, all->links, all->tools);
+    ft_directions(all);
 }
 
 int    ft_key_hook(int key, t_env *all)
@@ -44,7 +44,7 @@ void ft_mlx_looper(t_env *all)
 {
     all->mlx = mlx_init();
     all->win = mlx_new_window(all->mlx, WIDTH, HEIGHT, "KMS");
-    ft_draw(all, all->links, all->tools);
+    ft_directions(all);
     mlx_key_hook(all->win, ft_key_hook, all);
     mlx_loop(all->mlx);
 }

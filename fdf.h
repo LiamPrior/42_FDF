@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/21 17:18:53 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/21 22:56:51 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct  s_tools
     int         fd;
     int         y;
 	int         x;
-	int			prev_x;
-	int			prev_y;
+	double			prev_x;
+	double			prev_y;
     char        *altitude;
 }               t_tools;
 
@@ -52,7 +52,7 @@ typedef struct  s_links
     struct      s_links *next;
     int         x;
     int         y;
-    double         altitude;
+    int         altitude;
     double         tru_y;
     double         tru_x;
 }               t_links;
@@ -147,9 +147,9 @@ void 		ft_mlx_looper(t_env *all);
 //rotation
 t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
 //draw
-void    	ft_draw(t_env *all, t_links *links, t_tools *tools);
-void    	ft_driving_y(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
-void    	ft_driving_x(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
+// void    	ft_draw(t_env *all, t_links *links, t_tools *tools);
+// void    	ft_driving_y(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
+// void    	ft_driving_x(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
 
 
 int		hook_keydown(int key, t_env *all);

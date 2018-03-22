@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/21 17:48:54 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/21 18:13:20 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_links *ft_parse_x(t_env *all, t_tools *tools, t_links *links)
     while (*LINE == ' ')
     {
         LINE++;
-        if (*LINE && (!ft_isdigit(*LINE) && *LINE != '-'))
+        if (*LINE && (!ft_isdigit(*LINE) && *LINE != '-' && *LINE != ' '))
             BAD = true;
     }
     if (ft_create_list(links, tools) == -1)
@@ -94,8 +94,8 @@ int main(int argc, char **argv)
         if (!ft_parse_the_map(all, all->tools, all->links, fd))
             return (0);
         all->links = all->links->next;
-        // ft_calc_radian(all->rot);
-        // ft_lets_get_started(all->links, all->rot, all);
-        // ft_mlx_looper(all);
+        ft_calc_radian(all->rot);
+        ft_lets_get_started(all->links, all->rot, all);
+        ft_mlx_looper(all);
     }
 }
