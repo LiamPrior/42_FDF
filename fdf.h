@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/20 19:13:54 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/21 17:18:53 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # define WIDTH 1000
-# define HEIGHT 800
+# define HEIGHT 1000
  
 # define FD tools->fd
 # define NXT fresh->next
@@ -52,16 +52,10 @@ typedef struct  s_links
     struct      s_links *next;
     int         x;
     int         y;
-    int         altitude;
-    int         tru_y;
-    int         tru_x;
+    double         altitude;
+    double         tru_y;
+    double         tru_x;
 }               t_links;
-
-// typedef struct s_mlx
-// {
-//     void        *mlx;
-//     void        *win;
-// }              t_mlx;
 
 typedef struct		s_rotation
 {
@@ -154,9 +148,11 @@ void 		ft_mlx_looper(t_env *all);
 t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
 //draw
 void    	ft_draw(t_env *all, t_links *links, t_tools *tools);
-void    	ft_driving_y(t_env *all, int theda_x, int theda_y, int prev_x, int prev_y, int m);
-void    	ft_driving_x(t_env *all, int theda_x, int theda_y, int prev_x, int prev_y, int m);
+void    	ft_driving_y(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
+void    	ft_driving_x(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
 
+
+int		hook_keydown(int key, t_env *all);
 
 
 #endif
