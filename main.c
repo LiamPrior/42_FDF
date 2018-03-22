@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/21 18:13:20 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/22 14:54:09 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int ft_check_line(t_tools *tools)//change me
 		i++;
 	}
 	return (-1);
-}//.............
+}
 int ft_create_list(t_links *head, t_tools *tools)
 {
     t_links *fresh;
@@ -43,7 +43,6 @@ t_links *ft_parse_x(t_env *all, t_tools *tools, t_links *links)
 
     i = 0;
     XVAL++;
-    // printf("%d\n", XVAL);
     all->x_max = (double)XVAL;
     while (*LINE == ' ')
     {
@@ -56,7 +55,6 @@ t_links *ft_parse_x(t_env *all, t_tools *tools, t_links *links)
     else
         while (*LINE && (ft_isdigit(LINE[0]) || LINE[0] == '-'))
             LINE++;
-    // all->x_max = (double)XVAL;
     return (ft_parse_x(all, tools, links));
 }
 
@@ -66,9 +64,8 @@ int ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd)
     YVAL++;
     if (get_next_line(fd, &LINE) > 0)
     {
-        ft_parse_x(all, tools, links);
-        // LINE = NULL;
         XVAL = 0;
+        ft_parse_x(all, tools, links);
         if (BAD == false)
             ft_parse_the_map(all, tools, links, fd);
         else
@@ -94,6 +91,12 @@ int main(int argc, char **argv)
         if (!ft_parse_the_map(all, all->tools, all->links, fd))
             return (0);
         all->links = all->links->next;
+        // all->links = all->links->next;
+        // while (all->links)
+        // {
+        //     printf("x = %d y = %d z = %d\n", all->links->x, all->links->y, all->links->altitude);
+        //     all->links = all->links->next;
+        // }
         ft_calc_radian(all->rot);
         ft_lets_get_started(all->links, all->rot, all);
         ft_mlx_looper(all);
