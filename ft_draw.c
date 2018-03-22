@@ -6,13 +6,13 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 13:36:36 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/20 16:52:01 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/21 17:42:16 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void    ft_driving_x(t_env *all, int theda_x, int theda_y, int prev_x, int prev_y, int m)
+void    ft_driving_x(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m)
 {
     int e;
     int x;
@@ -23,7 +23,7 @@ void    ft_driving_x(t_env *all, int theda_x, int theda_y, int prev_x, int prev_
     e = m - 1;
     while (x < theda_x && y < theda_y)
     {
-        mlx_pixel_put(all->mlx, all->win, x, y, 0xFFFFFF);
+        mlx_pixel_put(all->mlx, all->win, (x + 100), (y + 100), 0xFFFFFF);
         x++;
         e += m;
         if (e >= 0)
@@ -34,7 +34,7 @@ void    ft_driving_x(t_env *all, int theda_x, int theda_y, int prev_x, int prev_
     }
 }
 
-void    ft_driving_y(t_env *all, int theda_x, int theda_y, int prev_x, int prev_y, int m)
+void    ft_driving_y(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m)
 {
     int e;
     int x;
@@ -45,7 +45,7 @@ void    ft_driving_y(t_env *all, int theda_x, int theda_y, int prev_x, int prev_
     e = m - 1;
     while (x < theda_x && y < theda_y)
     {
-        mlx_pixel_put(all->mlx, all->win, x, y, 0xFFFFFF);
+        mlx_pixel_put(all->mlx, all->win, (x + 100), (y + 100), 0xFFFFFF);
         y++;
         e += m;
         if (e >= 0)
@@ -64,13 +64,12 @@ void    ft_draw(t_env *all, t_links *links, t_tools *tools)
     double theda_y;
     int m;
 
-    printf("indraw\n");
     temp = links;
     da =-1;
     while (temp)
     {
-        theda_x = links->tru_x - tools->prev_x;
-        theda_y = links->tru_x - tools->prev_y;
+        theda_x = temp->tru_x - tools->prev_x;
+        theda_y = temp->tru_y - tools->prev_y;
         m = theda_y/theda_x;
         da = theda_x >= theda_y ? 1 : 0;
         if (da > 0)
@@ -87,8 +86,8 @@ void    ft_draw(t_env *all, t_links *links, t_tools *tools)
             else
                 ft_driving_y(all, tools->prev_x, tools->prev_y, theda_x, theda_y, m);
         }
-        tools->prev_x = links->tru_x;
-        tools->prev_y = links->tru_y;
+        tools->prev_x = temp->tru_x;
+        tools->prev_y = temp->tru_y;
         temp = temp->next;
     }
 }
