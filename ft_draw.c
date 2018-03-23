@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 13:36:36 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/21 23:28:33 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/22 19:15:19 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void ft_driving_x(double m, t_links *initial, t_links *terminal, t_env *all)
     e = m - 1;
     while (x < terminal->tru_x)
     {
-        mlx_pixel_put(all->mlx, all->win, x, y, 0xFFFFFF);
+        mlx_pixel_put(all->mlx, all->win, x + 200, y + 200, 0xFFFFFF);
         x++;
         e += m;
         if (e >= 0)
@@ -167,9 +167,9 @@ void ft_driving_y(double m, t_links *initial, t_links *terminal, t_env *all)
     double y;
 
     e = m - 1;
-    while (x < terminal->tru_x)
+    while (y < terminal->tru_y)
     {
-        mlx_pixel_put(all->mlx, all->win, x, y, 0xFFFFFF);
+        mlx_pixel_put(all->mlx, all->win, x + 200, y + 200, 0xFFFFFF);
         y++;
         e += m;
         if (e >= 0)
@@ -186,14 +186,31 @@ void ft_draw(t_links *initial, t_links *terminal, t_env *all)
     double  theda_x;
     double  theda_y;
 
+    // printf("here3\n");
+    // printf("ttru_x = %f itru_x = %f ttru_y = %f itru_y = %f\n", terminal->tru_x, initial->tru_x, terminal->tru_y, initial->tru_y);
     theda_x = terminal->tru_x - initial->tru_x;
     theda_y = terminal->tru_y - initial->tru_y;
     m = theda_y/theda_x;
     da = theda_x >= theda_y ? 1 : 0;
+    // if (da > 0)
+    //     initial->tru_x <= terminal->tru_x ? ft_driving_x(m, initial, terminal, all) : ft_driving_x(m, terminal, initial, all);
+    // else if (da == 0)
+    //     initial->tru_y <= terminal->tru_y ? ft_driving_y(m, initial, terminal, all) : ft_driving_y(m, terminal, initial, all);
     if (da > 0)
-        initial->tru_x <= terminal->tru_x ? ft_driving_x(m, initial, terminal, all) : ft_driving_x(m, terminal, initial, all);
+    {
+        if (initial->tru_x <= terminal->tru_x)
+            ft_driving_x(m, initial, terminal, all);
+        else
+            ft_driving_x(m, terminal, initial, all);
+    }
     else if (da == 0)
-        initial->tru_y <= terminal->tru_y ? ft_driving_y(m, initial, terminal, all) : ft_driving_y(m, terminal, ititial, all);
+    {
+        if (initial->tru_y <= terminal->tru_y)
+            ft_driving_y(m, initial, terminal, all);
+        else
+            ft_driving_y(m, terminal, initial, all);
+    }    
+
 }
 
 // void	coord_calc(t_plc *start, t_plc *end, t_mlx *mlx)

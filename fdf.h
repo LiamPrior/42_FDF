@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/21 22:56:51 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/22 16:49:12 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,11 @@ t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
 // void    	ft_driving_y(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
 // void    	ft_driving_x(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
 
-
+void    ft_directions(t_env *all);
+t_links *ft_find_terminal(t_env *all);
+void ft_draw(t_links *initial, t_links *terminal, t_env *all);
+void ft_driving_y(double m, t_links *initial, t_links *terminal, t_env *all);
+void ft_driving_x(double m, t_links *initial, t_links *terminal, t_env *all);
 int		hook_keydown(int key, t_env *all);
 
 

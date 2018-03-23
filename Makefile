@@ -6,13 +6,13 @@
 #    By: lprior <lprior@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/06 12:19:27 by lprior            #+#    #+#              #
-#    Updated: 2018/03/20 18:30:01 by lprior           ###   ########.fr        #
+#    Updated: 2018/03/22 21:37:48 by lprior           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 libx_flags = -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
-cflags = -Wall -Wextra -Werror# -fsantize=address
+cflags = # -g -fsanitize=address
 
 make_libft = @make -C ./libft/
 
@@ -32,7 +32,7 @@ all : $(name)
 
 $(name) :
 	@make -C libft/
-	$(cc) $(libx_flags) $(SRC) $(includes) -o $(name)
+	$(cc) $(cflags) $(libx_flags) $(SRC) $(includes) -o $(name)
 	@echo "Created FDF executable"
 clean:
 	@make -C libft/ clean

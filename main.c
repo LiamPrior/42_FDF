@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/22 14:54:09 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/22 21:44:03 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd)
     if (get_next_line(fd, &LINE) > 0)
     {
         XVAL = 0;
+        free(LINE);
         ft_parse_x(all, tools, links);
         if (BAD == false)
             ft_parse_the_map(all, tools, links, fd);
@@ -90,13 +91,8 @@ int main(int argc, char **argv)
         fd = open(argv[1], O_RDONLY);
         if (!ft_parse_the_map(all, all->tools, all->links, fd))
             return (0);
+        close (fd);
         all->links = all->links->next;
-        // all->links = all->links->next;
-        // while (all->links)
-        // {
-        //     printf("x = %d y = %d z = %d\n", all->links->x, all->links->y, all->links->altitude);
-        //     all->links = all->links->next;
-        // }
         ft_calc_radian(all->rot);
         ft_lets_get_started(all->links, all->rot, all);
         ft_mlx_looper(all);
