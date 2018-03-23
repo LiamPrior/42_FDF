@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 19:03:23 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/22 18:26:11 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/23 13:15:07 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,6 @@ t_rotation	*ft_calc_radian(t_rotation *degrees)
 	pov->radian_z = pov->degree_z * (PI / 180);
 	return (pov);
 }
-// t_plc	*find_struct(t_plc *head, int x_cord, int y_cord)
-// {
-// 	t_plc *new;
-
-// 	new = head;
-// 	if (!(x_cord >= 0 || y_cord >= 0))
-// 		return (NULL);
-// 	while (new->next)
-// 	{
-		// if (new->x == x_cord && new->y == y_cord)
-		// 	return (new);
-		// new = new->next;
-// 	}
-// 	return (NULL);
-// }
 
 t_links *ft_find_terminal(t_env *all)
 {
