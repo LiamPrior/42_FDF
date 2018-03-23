@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 20:56:05 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/22 22:50:09 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/23 12:45:30 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all)
         links->tru_y = rot->y2;
         links->tru_x = rot->x2;
         // printf("tru_x = %f tru_y = %f\n", links->tru_x, links->tru_y);
+        
         links = links->next;
     }
-    return (head);
+    // return (head);
+    return (links);
 }
