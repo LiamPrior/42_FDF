@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/22 21:44:03 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/23 13:02:41 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,13 @@ int main(int argc, char **argv)
             return (0);
         close (fd);
         all->links = all->links->next;
+        int i = 0;
+        // while (all->links)
+        // {
+        //     printf("x = %d\n", all->links->x);
+        //     all->links = all->links->next;
+        //     i++;
+        // }
         ft_calc_radian(all->rot);
         ft_lets_get_started(all->links, all->rot, all);
         ft_mlx_looper(all);
