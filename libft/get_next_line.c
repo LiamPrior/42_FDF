@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 11:52:28 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/12 20:02:06 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/22 21:40:16 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static	int	find_nl(int fd, char **str, char **line)
 	else if (*str[fd])
 	{
 		*line = ft_strdup(str[fd]);
+		free(str[fd]);
 		str[fd] = ft_strnew(0);
 		return (1);
 	}
