@@ -6,13 +6,13 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 19:03:23 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/23 13:15:07 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/23 16:35:16 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_links     *create_link(t_tools *tools)
+t_links     *ft_create_link(t_tools *tools)
 {
     t_links *new;
 
@@ -46,7 +46,7 @@ t_links *ft_find_terminal(t_env *all)
     // if (all->links->x < 0 || all->links->y + 1 < 0)
     //     return (NULL);
     // printf("new x = %d new y = %d links x = %d links y + 1 = %d\n", new->x, new->y, all->links->x, all->links->y + 1);
-    while (new)
+    while (new)//->next)
     {
         // printf("new x = %d new y = %d links x = %d links y + 1 = %d\n", new->x, new->y, all->links->x, all->links->y + 1);
         if (new->x == all->links->x && new->y == all->links->y + 1)
@@ -55,7 +55,10 @@ t_links *ft_find_terminal(t_env *all)
     }
     return (NULL);
 }
-
+// if (down->next != NULL && (down->next->x > down->x))
+// // 			coord_calc(a, down, all->mlx);
+// if (a->next->x < a->x && down->next != NULL)if the next link is less then the current one and down to next doesnt equal null keep going.
+// // 			coord_calc(a, down, all->mlx);
 
 void    ft_directions(t_env *all)
 {

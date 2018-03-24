@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 15:24:18 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/22 16:02:25 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/23 18:42:22 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ t_env *ft_init(void)
     e->tools = ft_init_tools();
     e->links = ft_init_links();
     e->rot = ft_init_rot();
+    e->theda_x = 0;
+    e->theda_y = 0;
     e->y_max = 0;
     e->x_max = 0;
     return (e);

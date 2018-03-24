@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/23 13:02:41 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/23 13:39:58 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int main(int argc, char **argv)
         close (fd);
         all->links = all->links->next;
         int i = 0;
-        // while (all->links)
+        // while (all->links->next)
         // {
         //     printf("x = %d\n", all->links->x);
         //     all->links = all->links->next;

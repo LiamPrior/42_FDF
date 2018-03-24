@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/22 16:49:12 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/23 18:37:20 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct  s_links
     int         y;
     int         altitude;
     double         tru_y;
-    double         tru_x;
+	double         tru_x;
 }               t_links;
 
 typedef struct		s_rotation
@@ -82,9 +82,10 @@ typedef struct	s_env
 	t_tools		*tools;
 	t_links		*links;
 	t_rotation	*rot;
-	// t_mlx		*mlx;
 	double		y_max;
 	double		x_max;
+	double		theda_x;
+	double		theda_y;
 	void        *mlx;
     void        *win;
 }				t_env;
@@ -138,7 +139,7 @@ t_env		*ft_init(void);
 //lists
 int 		ft_add_link(t_links *fresh, t_tools *tools);
 //utilities
-t_links     *create_link(t_tools *tools);
+t_links     *ft_create_link(t_tools *tools);
 t_rotation	*ft_calc_radian(t_rotation *degrees);
 //mlx bs
 void		ft_repeat(t_env *all);
@@ -154,8 +155,8 @@ t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
 void    ft_directions(t_env *all);
 t_links *ft_find_terminal(t_env *all);
 void ft_draw(t_links *initial, t_links *terminal, t_env *all);
-void ft_driving_y(double m, t_links *initial, t_links *terminal, t_env *all);
-void ft_driving_x(double m, t_links *initial, t_links *terminal, t_env *all);
+void ft_driving_y(t_links *initial, t_links *terminal, t_env *all);
+void ft_driving_x(t_links *initial, t_links *terminal, t_env *all);
 int		hook_keydown(int key, t_env *all);
 
 
