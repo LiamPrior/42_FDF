@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 13:36:36 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/23 18:56:27 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/23 21:20:28 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,84 +140,7 @@
 //     }
 // }
 //////////////////////////////////
-// void	draw_yaxis(t_plc *start, t_plc *end, t_position *line, t_mlx *mlx)
-// {
-// 	int				e;
-// 	int				slope;
-// 	unsigned int	x;
-// 	unsigned int	y;
 
-// 	x = start->x_place;
-// 	y = start->y_place;
-// 	e = 2 * line->dx - line->dy;
-// 	if (x < (int)end->x_place)
-// 		slope = 1;
-// 	else
-// 		slope = -1;
-// 	while (y < (int)end->y_place)
-// 	{
-// 		mlx_pixel_put(mlx->mlx, mlx->window, x, y, 0xFFFFFF);
-// 		if (e < 0)
-// 			e += 2 * line->dx;
-// 		else
-// 		{
-// 			x += slope;
-// 			e += 2 * (line->dx - line->dy);
-// 		}
-// 		y++;
-// 	}
-// }
-
-// void	coord_calc(t_plc *start, t_plc *end, t_mlx *mlx)
-// {
-// 	t_position	*line;
-
-// 	if (!(line = malloc(sizeof(t_position))))
-// 		return ;
-// 	line->dx = fabs((double)start->x_place - end->x_place);
-// 	line->dy = fabs((double)start->y_place - end->y_place);
-// 	if (line->dx > line->dy)
-// 	{
-// 		if (start->x_place > end->x_place)
-// 			draw_xaxis(end, start, line, mlx);
-// 		else
-// 			draw_xaxis(start, end, line, mlx);
-// 	}
-// 	else
-// 	{
-// 		if (start->y_place > end->y_place)
-// 			draw_yaxis(end, start, line, mlx);
-// 		else
-// 			draw_yaxis(start, end, line, mlx);
-// 	}
-// }
-// void	draw_xaxis(t_plc *start, t_plc *end, t_position *line, t_mlx *mlx)
-// {
-// 	int				e;
-// 	int				slope;
-// 	unsigned int	x;
-// 	unsigned int	y;
-
-// 	x = start->x_place;
-// 	y = start->y_place;
-// 	e = 2 * line->dy - line->dx;
-// 	if (y < (int)end->y_place)
-// 		slope = 1;
-// 	else
-// 		slope = -1;
-// 	while (x < (int)end->x_place)
-// 	{
-// 		mlx_pixel_put(mlx->mlx, mlx->window, x, y, 0xFFFFFF);
-// 		if (e < 0)
-// 			e += 2 * line->dy;
-// 		else
-// 		{
-// 			y += slope;
-// 			e += 2 * (line->dy - line->dx);
-// 		}
-// 		x++;
-// 	}
-// }
 void ft_driving_x(t_links *initial, t_links *terminal, t_env *all)
 {
     double e; //element of;
@@ -231,7 +154,7 @@ void ft_driving_x(t_links *initial, t_links *terminal, t_env *all)
     slope = y < terminal->tru_y ? 1 : -1;
     while (x < terminal->tru_x)
     {
-        mlx_pixel_put(all->mlx, all->win, x + 200, y + 200, 0xFFFFFF);
+        mlx_pixel_put(all->mlx, all->win, x, y, 0xFFFFFF);
         if (e < 0)
             e += 2 * all->theda_y;
         else
@@ -256,7 +179,7 @@ void ft_driving_y(t_links *initial, t_links *terminal, t_env *all)
     slope = x < terminal->tru_x ? 1 : -1;
     while (y < terminal->tru_y)
     {
-        mlx_pixel_put(all->mlx, all->win, x + 200, y + 200, 0xFFFFFF);
+        mlx_pixel_put(all->mlx, all->win, x, y, 0xFFFFFF);
         if (e < 0)
             e += 2 * all->theda_x;
         else
@@ -295,27 +218,3 @@ void ft_draw(t_links *initial, t_links *terminal, t_env *all)
     // }    
 
 }
-
-// void	coord_calc(t_plc *start, t_plc *end, t_mlx *mlx)
-// {
-// 	t_position	*line;
-
-// 	if (!(line = malloc(sizeof(t_position))))
-// 		return ;
-// 	line->dx = fabs((double)start->x_place - end->x_place);
-// 	line->dy = fabs((double)start->y_place - end->y_place);
-// 	if (line->dx > line->dy)
-// 	{
-// 		if (start->x_place > end->x_place)
-// 			draw_xaxis(end, start, line, mlx);
-// 		else
-// 			draw_xaxis(start, end, line, mlx);
-// 	}
-// 	else
-// 	{
-// 		if (start->y_place > end->y_place)
-// 			draw_yaxis(end, start, line, mlx);
-// 		else
-// 			draw_yaxis(start, end, line, mlx);
-// 	}
-// }
