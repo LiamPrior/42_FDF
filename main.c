@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/23 21:09:01 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/24 16:07:07 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int ft_check_line(t_tools *tools)//change me
 {
     int i;
 
-	i = 0;
+    i = 0;
 	while (LINE[i])
 	{
 		if (ft_isdigit(LINE[i]) || LINE[i] == '-')
@@ -65,18 +65,19 @@ int ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd)
     if (get_next_line(fd, &LINE) > 0)
     {
         XVAL = 0;
-        free(LINE);
+        // free(LINE);
         ft_parse_x(all, tools, links);
         if (BAD == false)
             ft_parse_the_map(all, tools, links, fd);
         else
         {   
             ft_printf(RED);
-            ft_printf("Errno: BAD MAP!");
+            ft_printf("Errno: BAD MAP!\n");
             ft_printf(NORMAL);
             return (0);
         }
     }
+    all->tools->line = NULL;
     all->y_max = (double)YVAL;
     return (1);
 }
@@ -92,7 +93,7 @@ int main(int argc, char **argv)
         if (!ft_parse_the_map(all, all->tools, all->links, fd))
             return (0);
         close (fd);
-        // all->links = all->links->next;
+        all->links = all->links->next;
         int i = 0;
         // while (all->links)
         // {
@@ -100,8 +101,8 @@ int main(int argc, char **argv)
         //     all->links = all->links->next;
         //     i++;
         // }
-        // ft_calc_radian(all->rot);
-        // ft_lets_get_started(all->links, all->rot, all);
-        // ft_mlx_looper(all);
+        ft_calc_radian(all->rot);
+        ft_lets_get_started(all->links, all->rot, all);
+        ft_mlx_looper(all);
     }
 }

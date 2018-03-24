@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 19:03:23 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/23 21:20:05 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/24 15:10:46 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ void    ft_directions(t_env *all)
     {
         if (terminal->next != NULL && (terminal->next->x > terminal->x))//this means it hasnt hit the end of the line yet so its draws down;
             ft_draw(initial, terminal, all);
-        if (initial->next && (initial->next->x > initial->x))//draws the line to the right!
-            ft_draw(initial, initial->next, all);
+        // if (initial->next && (initial->next->x > initial->x))//draws the line to the right!
+            // ft_draw(initial, initial->next, all);
         if (initial->next->x < initial->x && terminal->next != NULL)//the next link is less then the current one and down to next doesnt equal null keep going.
             ft_draw(initial, terminal, all);
+        if (initial->next && (initial->next->x > initial->x))
+            ft_draw(initial, initial->next, all);
         if (initial->next)
             initial = initial->next;
         if (terminal->next)
