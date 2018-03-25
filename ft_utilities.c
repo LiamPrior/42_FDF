@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 19:03:23 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/24 15:10:46 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/24 18:45:36 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_links     *ft_create_link(t_tools *tools)
         return (NULL);
     new->x = XVAL;
     new->y = YVAL;
-    new->altitude = ft_atoi(LINE);
+    new->altitude = ft_atoi(&(LINE[tools->i]));
     new->next = NULL;
     return (new);
 }

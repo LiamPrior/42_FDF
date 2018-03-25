@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/23 18:37:20 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/24 18:48:09 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 typedef struct  s_tools
 {
     char		*line;
+	int	i;
     bool        bad;
     int         fd;
     int         y;
@@ -89,43 +90,7 @@ typedef struct	s_env
 	void        *mlx;
     void        *win;
 }				t_env;
-// typedef struct	s_env
-// {
-// 	void		*mlx;
-// 	void		*win;
-// 	void		*img;
-// 	char		*pixels;
-// 	t_tools		*tools;
-// 	t_links		*links;
-//  	t_rotation	*rot;
-// 	// t_vertex	***points;
-// 	// t_color		*colors;
-// 	int			num_colors;
-// 	int			width;
-// 	int			height;
-// 	int			z_min;
-// 	int			z_max;
-// 	float		theta;
-// 	float		phi;
-// 	float		psi;
-// 	float		x_max;
-// 	float		y_max;
-// 	float		z_scale;
-// 	float		scale;
-// 	float		x_shift;
-// 	float		y_shift;
-// 	float		z_shift;
-// 	float		r;
-// 	float		g;
-// 	float		b;
-// 	int			focal_dist;
-// 	int			bits_per_pixel;
-// 	int			size_line;
-// 	int			endian;
-// 	// t_keys		*pressed;
-// 	int			project:1;
-// }				t_env;
-//main
+
 int 		ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd);//recursion used to increment y once x has finished
 t_links 	*ft_parse_x(t_env *all, t_tools *tools, t_links *links);
 int     	ft_create_list(t_links *head, t_tools *tools);

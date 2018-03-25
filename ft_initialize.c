@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 15:24:18 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/23 18:42:22 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/24 18:44:37 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_tools     *ft_init_tools(void)
     if(!(tools = (t_tools *)malloc(sizeof(t_tools))))
         return (NULL);
     LINE = NULL;
+	tools->i = 0;
     BAD = false;
     XVAL = -1;
     YVAL = 0;
@@ -42,18 +43,6 @@ t_tools     *ft_init_tools(void)
     FD = 0;
     return (tools);
 }
-
-// t_mlx   *ft_init_mlx(void)
-// {
-//     t_mlx *mlx;
-
-//     if(!(mlx = (t_mlx *)malloc(sizeof(t_mlx))))
-//         return (NULL);
-//         // mlx = (t_mlx *)malloc(sizeof(t_mlx));
-//     // mlx->mlx = mlx_init();
-//     // mlx->win = mlx_new_window(mlx, WIDTH, HEIGHT, "Lprior FDF");
-//     return (mlx);   
-// }
 
 t_rotation *ft_init_rot(void)
 {
@@ -91,33 +80,3 @@ t_env *ft_init(void)
     e->x_max = 0;
     return (e);
 }
-
-// t_env *ft_init(void)
-// {
-
-//     // view->tools = ft_init_tools();
-//     // view->links = ft_init_links();
-//     // view->rot = ft_init_rot();
-//     // view->y_max = 0;
-//     // view->x_max = 0;
-//     t_env *view;
-
-// 	view = (t_env*)malloc(sizeof(t_env));
-//     view->tools = ft_init_tools();
-//     view->links = ft_init_links();
-//     view->rot = ft_init_rot();
-//     view->project = 0;
-// 	view->theta = 0.0;
-// 	view->phi = 0.0;
-// 	view->psi = 0.0;
-// 	view->scale = 0.5;
-// 	view->z_scale = 1;
-// 	view->x_shift = 0.0;
-// 	view->y_shift = 0.0;
-// 	view->z_shift = 0.0;
-// 	view->focal_dist = 7;
-// 	view->r = 1;
-// 	view->g = 1;
-// 	view->b = 1;
-// 	return (view);
-// }
