@@ -6,17 +6,16 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/24 18:48:09 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/26 14:14:32 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIDTH 1000
-# define HEIGHT 1000
- 
-# define FD tools->fd
+# define WIDTH 800
+# define HEIGHT 600
+
 # define NXT fresh->next
 # define LINE tools->line
 # define XVAL tools->x
@@ -88,7 +87,8 @@ typedef struct	s_env
 	double		theda_x;
 	double		theda_y;
 	void        *mlx;
-    void        *win;
+	void        *win;
+	int 		i;
 }				t_env;
 
 int 		ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd);//recursion used to increment y once x has finished
@@ -111,7 +111,7 @@ void		ft_repeat(t_env *all);
 int	    	ft_key_hook(int key, t_env *all);
 void 		ft_mlx_looper(t_env *all);
 //rotation
-t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
+void ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
 //draw
 // void    	ft_draw(t_env *all, t_links *links, t_tools *tools);
 // void    	ft_driving_y(t_env *all, double theda_x, double theda_y, double prev_x, double prev_y, double m);
@@ -123,6 +123,7 @@ void ft_draw(t_links *initial, t_links *terminal, t_env *all);
 void ft_driving_y(t_links *initial, t_links *terminal, t_env *all);
 void ft_driving_x(t_links *initial, t_links *terminal, t_env *all);
 int		hook_keydown(int key, t_env *all);
+void	ft_quit(t_env *all);
 
 
 #endif

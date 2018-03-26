@@ -6,22 +6,18 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 20:56:05 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/24 20:04:40 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/25 15:07:03 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-        // printf("here = %f\n", rot->x0);
-        // printf("x = %f y = %f\n", rot->x2, rot->y2);
-        // printf("x2 = %f y2 = %f\n", rot->x2, rot->y2);
-        //  printf("tru_x = %f tru_y = %f\n", links->tru_x, links->tru_y);
-//okay bud im leaking in here!!!!!!!!!!!
-t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all)
+
+void    ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all)
 {
     t_links *links;
 
     links = head;
-    while (links)//->next != NULL)
+    while (links)
     {
         rot->x0  =  (double)links->x;
         rot->y0  =  ((links->y) * cos(rot->radian_x)) + (links->altitude * sin(rot->radian_x));
@@ -39,5 +35,4 @@ t_links     *ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all)
         links->tru_x = rot->x2;
         links = links->next;
     }
-    return (head);
 }

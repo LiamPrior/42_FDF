@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 19:03:23 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/24 20:03:33 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/26 12:44:40 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_rotation	*ft_calc_radian(t_rotation *degrees)
 	pov = degrees;
 	pov->radian_x = pov->degree_x * (PI / 180);
 	pov->radian_y = pov->degree_y * (PI / 180);
-	pov->radian_z = pov->degree_z * (PI / 180);
-	return (pov);
+    pov->radian_z = pov->degree_z * (PI / 180);
+	return (degrees);
 }
 
 t_links *ft_find_terminal(t_env *all)
@@ -74,4 +74,20 @@ void    ft_directions(t_env *all)
         if (terminal->next)
             terminal = terminal->next;
     }
+}
+
+void ft_quit(t_env *all)
+{
+    while (all->links)
+    {
+        free(all->links);
+        all->links = all->links->next;
+    }
+    free(all->tools);
+    free(all->rot);
+    free(all);
+    ft_printf(GREEN);
+    ft_printf("PROGRAM HAS BEEN TERMINATED\n");
+    ft_printf(NORMAL);
+    exit(1);
 }

@@ -6,13 +6,13 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 11:55:37 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/24 19:20:06 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/26 14:17:50 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int ft_check_line(t_tools *tools)//change me
+int ft_check_line(t_tools *tools)
 {
     int i;
 
@@ -43,13 +43,15 @@ t_links *ft_parse_x(t_env *all, t_tools *tools, t_links *links)
     while (LINE[tools->i] == ' ')
     {
         tools->i++;
-        if (LINE[tools->i] && (!ft_isdigit(LINE[tools->i]) && LINE[tools->i] != '-' && LINE[tools->i] != ' '))
+        if (LINE[tools->i] && (!ft_isdigit(LINE[tools->i])
+             && LINE[tools->i] != '-' && LINE[tools->i] != ' '))
             BAD = true;
     }
     if (LINE[tools->i] == '\0' || ft_create_list(links, tools) == -1)
         return(links);
     else
-        while (LINE[tools->i] && (ft_isdigit(LINE[tools->i]) || LINE[tools->i] == '-'))
+        while (LINE[tools->i] && 
+                (ft_isdigit(LINE[tools->i]) || LINE[tools->i] == '-'))
            	tools->i++;
     return (ft_parse_x(all, tools, links));
 }
@@ -81,7 +83,8 @@ int ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, int fd)
 int main(int argc, char **argv)
 {
     t_env       *all;
-    int     fd;//possibly put into a struct
+    int         fd;
+
     all = ft_init();
     if (argc == 2)
     {
@@ -89,15 +92,11 @@ int main(int argc, char **argv)
         if (!ft_parse_the_map(all, all->tools, all->links, fd))
             return (0);
         close (fd);
+        free(all->links);
         all->links = all->links->next;
-        int i = 0;
-        // while (all->links)
-        // {
-        //     printf("x = %d y = %d z = %d\n", all->links->x, all->links->y, all->links->altitude);
-        //     all->links = all->links->next;
-        // }
         ft_calc_radian(all->rot);
         ft_lets_get_started(all->links, all->rot, all);
+        sleep(10);
         ft_mlx_looper(all);
     }
 }

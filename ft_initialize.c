@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 15:24:18 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/24 18:44:37 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/26 14:18:19 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_tools     *ft_init_tools(void)
     tools->prev_x = 0;
     tools->prev_y = 0;
     tools->altitude = NULL;
-    FD = 0;
     return (tools);
 }
 
@@ -78,5 +77,6 @@ t_env *ft_init(void)
     e->theda_y = 0;
     e->y_max = 0;
     e->x_max = 0;
+    e->i = 0;
     return (e);
 }
