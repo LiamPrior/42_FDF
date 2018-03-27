@@ -6,28 +6,28 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/26 17:00:25 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/27 09:47:07 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# define FD int fd
 # define WIDTH 800
 # define HEIGHT 600
-# define FD int fd
-# define NXT fresh->next
-# define LINE tools->line
 # define XVAL tools->x
 # define YVAL tools->y
 # define BAD tools->bad
-# define ISVLD !ft_isdigit(LINE[i]) || LINE[i] != '-'
-# define NEXTMLLC (fresh->next = (t_links *)malloc(sizeof(t_links)))
+# define NXT fresh->next
+# define LINE tools->line
 # define PI 3.14159265359
-# define TRANS_Y (links->altitude * sin(rot->radian_x)
-# define TRANS_Z links->y * sin(rot->radian_x)
 # define SIN_Y sin(rot->radian_y)
 # define SIN_Z sin(rot->radian_z)
+# define TRANS_Z links->y * sin(rot->radian_x)
+# define ISVLD !ft_isdigit(LINE[i]) || LINE[i] != '-'
+# define TRANS_Y links->altitude * sin(rot->radian_x)
+# define NEXTMLLC (fresh->next = (t_links *)malloc(sizeof(t_links)))
 
 # include "minilibx_macos/mlx.h"
 # include <unistd.h>
@@ -95,33 +95,25 @@ typedef struct		s_env
 }					t_env;
 
 int 		ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, FD);
-t_links 	*ft_parse_x(t_env *all, t_tools *tools, t_links *links);
-int     	ft_create_list(t_links *head, t_tools *tools);
-int 		ft_check_line(t_tools *tools);
-//init
-t_tools		*ft_init_tools(void);
-t_links		*ft_init_links(void);
-t_rotation	*ft_init_rot(void);
-t_env		*ft_init(void);
-//lists
-int 		ft_add_link(t_links *fresh, t_tools *tools);
-//utilities
-t_links     *ft_create_link(t_tools *tools);
-t_rotation	*ft_calc_radian(t_rotation *degrees);
-//mlx bs
-void		ft_repeat(t_env *all);
-int	    	ft_key_hook(int key, t_env *all);
-void 		ft_mlx_looper(t_env *all);
-//rotation
 void 		ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
-//draw
-void    	ft_directions(t_env *all);
-t_links 	*ft_find_terminal(t_env *all);
-void 		ft_draw(t_links *initial, t_links *terminal, t_env *all);
 void 		ft_driving_y(t_links *initial, t_links *terminal, t_env *all);
 void 		ft_driving_x(t_links *initial, t_links *terminal, t_env *all);
+void 		ft_draw(t_links *initial, t_links *terminal, t_env *all);
+t_links 	*ft_parse_x(t_env *all, t_tools *tools, t_links *links);
+int     	ft_create_list(t_links *head, t_tools *tools);
+int 		ft_add_link(t_links *fresh, t_tools *tools);
 int			hook_keydown(int key, t_env *all);
+int	    	ft_key_hook(int key, t_env *all);
+t_links     *ft_create_link(t_tools *tools);
+t_links 	*ft_find_terminal(t_env *all);
+int 		ft_check_line(t_tools *tools);
+void 		ft_mlx_looper(t_env *all);
+void    	ft_directions(t_env *all);
+void		ft_repeat(t_env *all);
+t_tools		*ft_init_tools(void);
+t_links		*ft_init_links(void);
 void		ft_quit(t_env *all);
-
+t_rotation	*ft_init_rot(void);
+t_env		*ft_init(void);
 
 #endif
