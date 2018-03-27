@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 16:30:54 by lprior            #+#    #+#             */
-/*   Updated: 2018/02/18 16:41:41 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/27 10:07:36 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_build_tools(t_flags *tools)
 
 int		ft_parse_format_print(char *format, va_list ap, t_flags *tools)
 {
-	int i;
-	int start;
+	int			i;
+	int			start;
 
 	i = 0;
 	start = 0;
@@ -56,7 +56,8 @@ int		ft_printf(const char *format, ...)
 {
 	t_flags		*tools;
 	va_list		ap;
-	int		retrn;
+	int			retrn;
+
 	va_start(ap, format);
 	tools = (t_flags *)malloc(sizeof(t_flags));
 	ft_parse_format_print(((char *)format), ap, tools);
