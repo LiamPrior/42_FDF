@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liamprior <liamprior@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/22 17:27:36 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/11 21:00:36 by liamprior        ###   ########.fr       */
+/*   Updated: 2018/03/27 10:14:10 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-
-
-
 
 typedef	struct		s_list
 {
@@ -102,7 +99,5 @@ void				ft_print_putchar(char c, int *res);
 void				ft_print_putstr(char const *s, int *res);
 
 int					get_next_line(const int fd, char **line);
-// static				int	find_nl(int fd, char **str, char **line);
-// static				int	ft_readfile(int fd, char **str);
 
 #endif
