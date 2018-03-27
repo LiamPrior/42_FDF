@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 11:52:28 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/22 21:40:16 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/27 09:59:51 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static	int	ft_readfile(int fd, char **str)
 	return (ret);
 }
 
-int	get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static	char	*str[4864];
 

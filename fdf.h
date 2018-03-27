@@ -6,14 +6,13 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:32:52 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/27 09:47:07 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/27 10:42:37 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define FD int fd
 # define WIDTH 800
 # define HEIGHT 600
 # define XVAL tools->x
@@ -38,30 +37,30 @@
 # include "libft/ft_printf/ft_printf.h"
 # include <math.h>
 
-typedef struct  s_tools
+typedef struct		s_tools
 {
-    char			*line;
+	char			*line;
 	int				i;
-    bool        	bad;
-    int         	fd;
-    int         	y;
-	int         	x;
+	bool			bad;
+	int				fd;
+	int				y;
+	int				x;
 	double			prev_x;
 	double			prev_y;
-    char        	*altitude;
-}               	t_tools;
+	char			*altitude;
+}					t_tools;
 
-typedef struct  	s_links
+typedef	struct		s_links
 {
-    struct      	s_links *next;
-    int         	x;
-    int         	y;
-    int         	altitude;
-    double        	tru_y;
-	double         	tru_x;
-}               	t_links;
+	struct s_links	*next;
+	int				x;
+	int				y;
+	int				altitude;
+	double			tru_y;
+	double			tru_x;
+}					t_links;
 
-typedef struct		s_rotation
+typedef	struct		s_rotation
 {
 	double			x0;
 	double			x1;
@@ -89,31 +88,31 @@ typedef struct		s_env
 	double			x_max;
 	double			theda_x;
 	double			theda_y;
-	void        	*mlx;
-	void        	*win;
-	int 			i;
+	void			*mlx;
+	void			*win;
+	int				i;
 }					t_env;
 
-int 		ft_parse_the_map(t_env *all, t_tools *tools, t_links *links, FD);
-void 		ft_lets_get_started(t_links *head, t_rotation *rot, t_env *all);
-void 		ft_driving_y(t_links *initial, t_links *terminal, t_env *all);
-void 		ft_driving_x(t_links *initial, t_links *terminal, t_env *all);
-void 		ft_draw(t_links *initial, t_links *terminal, t_env *all);
-t_links 	*ft_parse_x(t_env *all, t_tools *tools, t_links *links);
-int     	ft_create_list(t_links *head, t_tools *tools);
-int 		ft_add_link(t_links *fresh, t_tools *tools);
-int			hook_keydown(int key, t_env *all);
-int	    	ft_key_hook(int key, t_env *all);
-t_links     *ft_create_link(t_tools *tools);
-t_links 	*ft_find_terminal(t_env *all);
-int 		ft_check_line(t_tools *tools);
-void 		ft_mlx_looper(t_env *all);
-void    	ft_directions(t_env *all);
-void		ft_repeat(t_env *all);
-t_tools		*ft_init_tools(void);
-t_links		*ft_init_links(void);
-void		ft_quit(t_env *all);
-t_rotation	*ft_init_rot(void);
-t_env		*ft_init(void);
+int					ft_parse_the_map(t_env *all, t_tools *t, t_links *l, int f);
+void				ft_lets_get_started(t_links *h, t_rotation *ro, t_env *all);
+void				ft_driving_y(t_links *initial, t_links *termin, t_env *all);
+void				ft_driving_x(t_links *initial, t_links *termin, t_env *all);
+void				ft_draw(t_links *initial, t_links *terminal, t_env *all);
+t_links				*ft_parse_x(t_env *all, t_tools *tools, t_links *links);
+int					ft_create_list(t_links *head, t_tools *tools);
+int					ft_add_link(t_links *fresh, t_tools *tools);
+int					hook_keydown(int key, t_env *all);
+int					ft_key_hook(int key, t_env *all);
+t_links				*ft_create_link(t_tools *tools);
+t_links				*ft_find_terminal(t_env *all);
+int					ft_check_line(t_tools *tools);
+void				ft_mlx_looper(t_env *all);
+void				ft_directions(t_env *all);
+void				ft_repeat(t_env *all);
+t_tools				*ft_init_tools(void);
+t_links				*ft_init_links(void);
+void				ft_quit(t_env *all);
+t_rotation			*ft_init_rot(void);
+t_env				*ft_init(void);
 
 #endif
