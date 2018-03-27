@@ -6,7 +6,7 @@
 /*   By: lprior <lprior@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 19:03:23 by lprior            #+#    #+#             */
-/*   Updated: 2018/03/26 12:44:40 by lprior           ###   ########.fr       */
+/*   Updated: 2018/03/26 17:38:17 by lprior           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_links     *ft_create_link(t_tools *tools)
 {
     t_links *new;
-    if (!(new = (t_links *)malloc(sizeof(t_links))))// remembere star
+    if (!(new = (t_links *)malloc(sizeof(t_links))))
         return (NULL);
     new->x = XVAL;
     new->y = YVAL;
@@ -25,21 +25,9 @@ t_links     *ft_create_link(t_tools *tools)
     return (new);
 }
 
-t_rotation	*ft_calc_radian(t_rotation *degrees)
-{
-	t_rotation *pov;
-
-	pov = degrees;
-	pov->radian_x = pov->degree_x * (PI / 180);
-	pov->radian_y = pov->degree_y * (PI / 180);
-    pov->radian_z = pov->degree_z * (PI / 180);
-	return (degrees);
-}
-
 t_links *ft_find_terminal(t_env *all)
 {
     t_links *new;
-    t_links *down;
 
     new = all->links;
     while (new)
@@ -65,7 +53,7 @@ void    ft_directions(t_env *all)
             ft_draw(initial, terminal, all);
         if (initial->next->x < initial->x && terminal->next != NULL)
             ft_draw(initial, terminal, all);
-        if (initial->next && (initial->next->x > initial->x))
+        else if (initial->next && (initial->next->x > initial->x))
             ft_draw(initial, initial->next, all);
         if (initial && terminal && terminal->next == NULL)
             ft_draw(initial, terminal, all);

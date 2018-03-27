@@ -6,13 +6,13 @@
 #    By: lprior <lprior@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/06 12:19:27 by lprior            #+#    #+#              #
-#    Updated: 2018/03/25 15:03:09 by lprior           ###   ########.fr        #
+#    Updated: 2018/03/26 17:21:20 by lprior           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 libx_flags = -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
-# cflags = -g -fsanitize=address
+cflags = -Wall -Wextra -Werror#-g -fsanitize=address
 
 make_libft = @make -C ./libft/
 
